@@ -24,8 +24,6 @@ git clone https://github.com/Fyuan0206/context-manager-cluade-code.git ~/.claude
 
 克隆完成后，智能体即可加载 `context-manager` 技能（见下方「快速开始」）。
 
-**仓库地址**：[https://github.com/Fyuan0206/context-manager-cluade-code](https://github.com/Fyuan0206/context-manager-cluade-code)
-
 ## 概述
 
 这是一个蒸馏自 Claude Code (v2.1.92.321) 的上下文管理系统技能。当其他智能体加载此技能后，即可获得与 Claude Code 同级别的上下文管理能力，包括：
