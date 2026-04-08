@@ -1,0 +1,105 @@
+{
+  "skill_name": "context-manager",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我在开发一个 React 项目，需要记住我的代码风格偏好：使用函数组件、hooks 命名以 'use' 开头、组件文件使用 PascalCase。请帮我保存这些偏好到记忆中。",
+      "expected_output": "智能体应该识别这是一个需要保存用户偏好的场景，创建一个 feedback 或 user 类型的记忆文件，记录这些代码风格偏好",
+      "files": [],
+      "assertions": [
+        {
+          "name": "创建了记忆文件",
+          "description": "应该在适当的记忆目录中创建了新的 .md 文件",
+          "type": "file_exists"
+        },
+        {
+          "name": "记忆类型正确",
+          "description": "frontmatter 中的 type 字段应该是 'user' 或 'feedback'",
+          "type": "frontmatter_valid"
+        },
+        {
+          "name": "包含用户偏好",
+          "description": "记忆内容应该包含 React hooks 命名和组件文件命名约定",
+          "type": "content_match"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "我们项目有三个待办：1) 实现用户登录API 2) 添加忘记密码功能 3) 优化首页加载速度。截止日期是本周五。请记录这些信息。",
+      "expected_output": "智能体应该创建一个 project 类型的记忆，记录这三个待办事项、截止日期，并将相对日期转换为绝对日期",
+      "files": [],
+      "assertions": [
+        {
+          "name": "创建了项目记忆",
+          "description": "应该创建 type 为 'project' 的记忆文件",
+          "type": "frontmatter_valid"
+        },
+        {
+          "name": "包含三个待办事项",
+          "description": "记忆内容应该列出所有三个任务",
+          "type": "content_match"
+        },
+        {
+          "name": "日期已转换",
+          "description": "应该将'本周五'转换为具体的绝对日期",
+          "type": "content_match"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "我们的 bug 跟踪使用 Linear，项目代号是 'BACKEND-API'。API 文档在 https://api.example.com/docs。请记住这些参考信息。",
+      "expected_output": "智能体应该创建一个 reference 类型的记忆，记录 Linear 项目信息和 API 文档链接",
+      "files": [],
+      "assertions": [
+        {
+          "name": "创建了参考记忆",
+          "description": "应该创建 type 为 'reference' 的记忆文件",
+          "type": "frontmatter_valid"
+        },
+        {
+          "name": "包含外部资源",
+          "description": "应该包含 Linear 项目和 API 文档 URL",
+          "type": "content_match"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "我们对话已经超过 200 条消息了，历史记录太长。请压缩上下文，总结之前讨论的核心内容。",
+      "expected_output": "智能体应该识别对话历史过长，执行压缩操作，生成一个摘要消息替换历史",
+      "files": [],
+      "assertions": [
+        {
+          "name": "触发了压缩",
+          "description": "应该生成压缩摘要并替换或标记历史消息",
+          "type": "behavior_check"
+        },
+        {
+          "name": "摘要保留关键信息",
+          "description": "压缩后的摘要应该保留对话的核心内容",
+          "type": "content_match"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "这个项目我已经告诉过你我喜欢用 ESLint 而不是 TSLint，而且提交前必须跑测试。你怎么又忘了？",
+      "expected_output": "智能体应该从之前的记忆中检索到用户的这些偏好，并确认理解",
+      "files": [],
+      "assertions": [
+        {
+          "name": "检索到历史记忆",
+          "description": "智能体应该引用之前保存的反馈记忆",
+          "type": "behavior_check"
+        },
+        {
+          "name": "确认理解偏好",
+          "description": "应该明确表示知道用户偏好 ESLint 和测试要求",
+          "type": "response_content"
+        }
+      ]
+    }
+  ]
+}
